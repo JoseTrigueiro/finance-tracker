@@ -1,0 +1,10 @@
+[project]
+
+name = "cgdtracker-backend"
+requires-python = ">= 3.12"
+version = "0.1.0"
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+

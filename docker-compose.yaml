@@ -1,0 +1,17 @@
+services:
+  vllm-service:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+      - MAX_MODEL_LEN=${MAX_MODEL_LEN}
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    ports:
+      - "8000:8000"
+    command: --model microsoft/Phi-3-mini-4k-instruct --max-model-len=${MAX_MODEL_LEN}
